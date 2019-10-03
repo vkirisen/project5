@@ -1,0 +1,17 @@
+myDF <- read.csv("/class/datamine/data/airbnb/united-states/ca/los-angeles/2019-07-08/visualisations/listings.csv")
+names(myDF)
+tail(sort(table(myDF$number_of_reviews)))
+tail(sort(tapply(myDF$number_of_reviews, myDF$host_id, sum))) #21013529 has 5505
+tail(sort(tapply(myDF$number_of_reviews, myDF$neighbourhood, sum))) #Venice 151629
+
+myDF2 <- read.csv("/class/datamine/data/flights/2019.csv")
+names(myDF2)
+head(myDF2)
+myDF2$myflightpath <- paste(myDF2$ORIGIN, myDF2$DEST)
+mean(myDF2$DEP_DELAY, na.rm=T) #remove the NA data. average is 10.93724
+
+
+myDF <- read.delim("/class/datamine/data/election/itcont2020.txt", sep="|")
+myDF$location <- paste(myDF$CITY, myDF$STATE)
+tail(sort(table(myDF$location))) #New York NY has 77999
+tail(sort(table(myDF$CMTE_ID)))  #C00696946
